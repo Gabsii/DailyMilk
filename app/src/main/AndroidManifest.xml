@@ -20,9 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.DashboardActivity" />
-        <activity android:name=".Admin.OpenOrdersActivity" />
-        <activity android:name=".User.OrderStateActivity" />
+        <activity
+            android:name=".Admin.DashboardActivity"
+            android:label="Dashboard">
+        </activity>
+        <activity
+            android:name=".Admin.OpenOrdersActivity"
+            android:label="OpenOrders">
+
+        </activity>
+        <activity
+            android:name=".User.OrderStateActivity"
+            android:label="OrderState">
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"></activity>
