@@ -80,6 +80,11 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         alertDialog.setMessage(result);
         alertDialog.show();
+        /*
+        *
+        * Hier auf MainActivity verweisen
+        *
+        * */
     }
 
     @Override
