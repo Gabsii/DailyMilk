@@ -17,6 +17,7 @@
     <string-array name="drinks">
         <item>small Milk</item>
         <item>medium Milk</item>
-        <item>big Milk</item>
+        <item>large Milk</item>
     </string-array>
-</resources>
+    <string name="Username"></string>
+    </resources>
