@@ -2,9 +2,10 @@ package dailymilk.com.dailymilk;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
-
+import android.content.Intent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -17,6 +18,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import dailymilk.com.dailymilk.User.MainActivity;
+
 /**
  * Created by Admin on 28.11.2016.
  */
@@ -27,6 +30,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     BackgroundWorker (Context ctx){
         context = ctx;
     }
+    String user_name;
 
     @Override
     protected String doInBackground(String... params) {
@@ -34,7 +38,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
         String login_url = "http://dailymilk.tk/login.php";
         if(type.equals("login")){
             try {
-                String user_name = params[1];
+                user_name = params[1];
                 String password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -80,11 +84,6 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         alertDialog.setMessage(result);
         alertDialog.show();
-        /*
-        *
-        * Hier auf MainActivity verweisen
-        *
-        * */
     }
 
     @Override
