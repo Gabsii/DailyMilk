@@ -29,10 +29,6 @@ public class LoginActivity extends AppCompatActivity {
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, user, pass);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(MainActivity.EXTRA_MESSAGE, user);
-        startActivity(intent);
     }
 
 }
