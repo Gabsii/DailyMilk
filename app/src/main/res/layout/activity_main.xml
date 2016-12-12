@@ -10,6 +10,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dailymilk.com.dailymilk.User.MainActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/dailymilk"
+        android:onClick="onOrder"
+        android:background="@null"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:entries="@array/drinks"
+        android:layout_above="@+id/imageButton"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,25 +35,7 @@
         android:text="Username"
         android:id="@+id/Username"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:entries="@array/drinks"
-        android:layout_below="@+id/Username"
-        android:layout_marginTop="40dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/dailymilk"
-        android:onClick="onOrder"
-        android:layout_width="512px"
-        android:layout_height="512px" />
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

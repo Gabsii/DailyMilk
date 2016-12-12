@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.renderscript.ScriptGroup;
 import android.content.Intent;
 import android.widget.Toast;
 
