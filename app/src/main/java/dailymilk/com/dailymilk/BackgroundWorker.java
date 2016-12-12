@@ -36,6 +36,13 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     String user_name;
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Login Status");
+    }
+
+    @Override
     protected String doInBackground(String... params) {
         type = params[0];
         String login_url = "http://dailymilk.tk/login.php";
@@ -75,9 +82,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             }
         }
         if(type.equals("order")){
-            String username = params[1];
+            String user = params[1];
             String order = params[2];
-            String date = params[3];
             try {
                 URL url = new URL(order_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -85,15 +91,22 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoOutput(true);
                 OutputStream OS = httpURLConnection.getOutputStream();
                 BufferedWriter bW = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
-                String data = URLEncoder.encode("user", "UTF-8") + " = " + URLEncoder.encode(username, "UTF-8") + "&" +
-                        URLEncoder.encode("order", "UTF-8") + " = " + URLEncoder.encode(order, "UTF-8") + "&" +
-                        URLEncoder.encode("date", "UTF-8") + " = " + URLEncoder.encode(date, "UTF-8");
+                String data = URLEncoder.encode("user", "UTF-8")+"="+URLEncoder.encode(user, "UTF-8")+"&"+
+                        URLEncoder.encode("order", "UTF-8")+"="+URLEncoder.encode(order, "UTF-8");
                 bW.write(data);
                 bW.flush();
                 OS.close();
                 InputStream IS = httpURLConnection.getInputStream();
+                BufferedReader bR = new BufferedReader(new InputStreamReader(IS, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bR.readLine()) != null) {
+                    result += line;
+                }
+                bR.close();
                 IS.close();
-                return "Order Success";
+                httpURLConnection.disconnect();
+                return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (ProtocolException e) {
@@ -113,10 +126,15 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.putExtra(MainActivity.EXTRA_MESSAGE, user_name);
                 context.startActivity(intent);
+            } else {
+                alertDialog.setMessage(result);
+                alertDialog.show();
             }
        }
         if (type.equals("order")){
             Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+            //alertDialog.setMessage(result);
+            //alertDialog.show();
         }
     }
 

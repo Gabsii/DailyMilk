@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         username = getIntent().getStringExtra(EXTRA_MESSAGE);
-        sdf = new SimpleDateFormat("dd MM yyyy - HH:mm:ss");
+        sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
 
 
         DisplayUser.setText(username);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         time = sdf.format(new Date());
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute("order",username, orderedItem, time);
+        backgroundWorker.execute("order",username, orderedItem);
 
         Intent intent = new Intent(this, OrderStateActivity.class);
         intent.putExtra(EXTRA_DATE, time);
