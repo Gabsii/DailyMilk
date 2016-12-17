@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.content.Intent;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -21,6 +20,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import dailymilk.com.dailymilk.User.MainActivity;
+import dailymilk.com.dailymilk.User.OrderStateActivity;
+
+import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_RESULT;
+
 
 /**
  * Created by Admin on 28.11.2016.
@@ -135,6 +138,10 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             Toast.makeText(context,result,Toast.LENGTH_LONG).show();
             //alertDialog.setMessage(result);
             //alertDialog.show();
+
+            Intent intent = new Intent(context, OrderStateActivity.class);
+            intent.putExtra(EXTRA_RESULT, result);
+            context.startActivity(intent);
         }
     }
 

@@ -13,10 +13,6 @@ import java.util.Date;
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.R;
 
-import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_DATE;
-import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_ORDER;
-import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_USER;
-
 public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "Username";
@@ -58,11 +54,5 @@ public class MainActivity extends AppCompatActivity {
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
-
-        Intent intent = new Intent(this, OrderStateActivity.class);
-        intent.putExtra(EXTRA_DATE, time);
-        intent.putExtra(EXTRA_ORDER, orderedItem);
-        intent.putExtra(EXTRA_USER, username);
-        startActivity(intent);
     }
 }

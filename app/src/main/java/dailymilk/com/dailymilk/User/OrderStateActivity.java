@@ -2,27 +2,32 @@ package dailymilk.com.dailymilk.User;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import dailymilk.com.dailymilk.R;
 
 public class OrderStateActivity extends AppCompatActivity {
 
-    public final static String EXTRA_DATE = "Date";
-    public final static String EXTRA_USER = "Username";
-    public final static String EXTRA_ORDER = "Order";
+    public final static String EXTRA_RESULT = "result";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_state);
 
-        TextView tv = (TextView) findViewById(R.id.tv);
-        String date = getIntent().getStringExtra(EXTRA_DATE);
-        String user = getIntent().getStringExtra(EXTRA_USER);
-        String order = getIntent().getStringExtra(EXTRA_ORDER);
+        LinearLayout ll = (LinearLayout) findViewById(R.id.activity_order_state);
+        ll.setOrientation(LinearLayout.VERTICAL);
 
-        String res = user + " ordered " + order + " at " + date;
+        String result = getIntent().getStringExtra(EXTRA_RESULT);
 
-        tv.setText(res);
+        String[] resultArray = result.split(";");
+
+        for(int i= 0, length = resultArray.length; i < length; i++) {
+            TextView tv = new TextView(this);
+            tv.setText(resultArray[i]);
+            ll.addView(tv);
+            //TODO: Split resultArray in another Array to get every Element of resultArray in an seperated TextView
+        }
+
     }
 }
