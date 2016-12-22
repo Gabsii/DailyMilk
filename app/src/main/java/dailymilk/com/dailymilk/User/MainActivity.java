@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         DisplayUser.setText(username);
-
+        //TODO: vielleicht sowas wie onSwipe wo man dann nach rechts swiped statt auf den Order Button zu drücken (es wird nicht bestellt sondern angezeigt)
     }
 
     public void onOrder(View view) {

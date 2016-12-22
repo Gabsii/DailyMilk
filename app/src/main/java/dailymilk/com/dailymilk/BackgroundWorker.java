@@ -135,10 +135,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             }
        }
         if (type.equals("order")){
-            Toast.makeText(context,result,Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,result,Toast.LENGTH_LONG).show();
             //alertDialog.setMessage(result);
             //alertDialog.show();
-
             Intent intent = new Intent(context, OrderStateActivity.class);
             intent.putExtra(EXTRA_RESULT, result);
             context.startActivity(intent);

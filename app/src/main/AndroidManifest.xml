@@ -21,11 +21,14 @@
             android:label="Dashboard"></activity>
         <activity
             android:name=".Admin.OpenOrdersActivity"
-            android:label="OpenOrders"></activity>
-        <activity
-            android:name=".User.OrderStateActivity"
             android:label="OrderState"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".User.OrderStateActivity"
+            android:label="OrderState"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".LoginActivity"
+                    android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+                    android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

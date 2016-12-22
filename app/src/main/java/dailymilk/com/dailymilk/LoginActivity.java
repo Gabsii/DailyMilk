@@ -17,6 +17,8 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.UsernameInput);
         password = (EditText) findViewById(R.id.PasswordInput);
+
+        //TODO: Am Anfang sieht man das Logo und einen Login Button, beim klicken auf den Login Button werden die 2 EditTexts eingeblendet
     }
 
     public void OnLogin(View view){

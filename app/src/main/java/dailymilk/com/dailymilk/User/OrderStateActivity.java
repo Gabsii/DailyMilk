@@ -23,11 +23,12 @@ public class OrderStateActivity extends AppCompatActivity {
         String[] resultArray = result.split(";");
 
         for(int i= 0, length = resultArray.length; i < length; i++) {
+            //TODO: Erster Eintrag muss unter derzeitiger Bestellstatus, alle anderen unter History gesetzt werden.
             TextView tv = new TextView(this);
             tv.setText(resultArray[i]);
             ll.addView(tv);
             //TODO: Split resultArray in another Array to get every Element of resultArray in an seperated TextView
         }
-
+        //TODO: Grafisch Aufpeppen
     }
 }
