@@ -3,6 +3,8 @@ package dailymilk.com.dailymilk;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,14 +26,34 @@ public class LoginActivity extends AppCompatActivity {
         logo = (ImageView) findViewById(R.id.Logo);
         login = (Button) findViewById(R.id.LoginButton);
         firstLogin = (Button) findViewById(R.id.FirstLoginButton);
+
+        
+        //Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
+        //logo.startAnimation(myFadeInAnimation);
+        //firstLogin.startAnimation(myFadeInAnimation);
+
     }
+
     //Ausblenden des Logos und des ersten Login-Buttons / Einblenden des "richtigen" Login-Buttons und der 2 EditTexts
     public void OnFirstLogin(View view) {
+        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
+        Animation myFadeInAnimation1 = AnimationUtils.loadAnimation(this, R.anim.fadein);
+
+        logo.startAnimation(myFadeInAnimation);
+        firstLogin.startAnimation(myFadeInAnimation);
+        username.startAnimation(myFadeInAnimation1);
+        password.startAnimation(myFadeInAnimation1);
+        login.startAnimation(myFadeInAnimation1);
+
         firstLogin.setVisibility(View.INVISIBLE);
         logo.setVisibility(View.INVISIBLE);
         username.setVisibility(View.VISIBLE);
         password.setVisibility(View.VISIBLE);
         login.setVisibility(View.VISIBLE);
+
+
+
+
     }
 
     public void OnLogin(View view){
