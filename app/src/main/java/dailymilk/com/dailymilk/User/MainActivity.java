@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
@@ -16,7 +17,7 @@ import dailymilk.com.dailymilk.R;
 public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "Username";
-    SimpleDateFormat sdf;
+    public final static String EXTRA_DRINKS = "DRINK";
     String orderedItem;
     String username;
     String time;
@@ -26,8 +27,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner mySpinner=(Spinner) findViewById(R.id.spinner);
+        String res = getIntent().getStringExtra(EXTRA_DRINKS);
+        String[] resArray = res.split(";");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, resArray);
+
+        Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
         TextView DisplayUser = (TextView) findViewById(R.id.Username);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setPadding(0,5,0,15);
+        mySpinner.setAdapter(adapter);
 
         mySpinner.setOnItemSelectedListener((new AdapterView.OnItemSelectedListener() {
             @Override
@@ -42,15 +52,12 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         username = getIntent().getStringExtra(EXTRA_MESSAGE);
-        sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
-
 
         DisplayUser.setText(username);
         //TODO: vielleicht sowas wie onSwipe wo man dann nach rechts swiped statt auf den Order Button zu drücken (es wird nicht bestellt sondern angezeigt)
     }
 
     public void onOrder(View view) {
-        time = sdf.format(new Date());
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);

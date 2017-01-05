@@ -15,9 +15,6 @@
         completions."
     </string>
     <string-array name="drinks">
-        <item>small Milk</item>
-        <item>medium Milk</item>
-        <item>large Milk</item>
     </string-array>
     <string name="Username"></string>
     </resources>

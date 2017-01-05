@@ -19,6 +19,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import dailymilk.com.dailymilk.Admin.DashboardActivity;
 import dailymilk.com.dailymilk.User.MainActivity;
 import dailymilk.com.dailymilk.User.OrderStateActivity;
 
@@ -26,7 +27,7 @@ import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_RESULT;
 
 
 /**
- * Created by Admin on 28.11.2016.
+ * Created by Gabsii on 28.11.2016.
  */
 
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
@@ -125,14 +126,20 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
        if(type.equals("login")) {
-            if (result.equals("true")) {
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(MainActivity.EXTRA_MESSAGE, user_name);
-                context.startActivity(intent);
-            } else {
-                alertDialog.setMessage(result);
-                alertDialog.show();
-            }
+           if (result.equals("Username/Password is wrong")) {
+               alertDialog.setMessage(result);
+               alertDialog.show();
+           } else {
+               if(result.equals("isAdmin")){
+                   Intent intent = new Intent(context, DashboardActivity.class);
+                   context.startActivity(intent);
+               }else {
+                   Intent intent = new Intent(context, MainActivity.class);
+                   intent.putExtra(MainActivity.EXTRA_MESSAGE, user_name);
+                   intent.putExtra(MainActivity.EXTRA_DRINKS, result);
+                   context.startActivity(intent);
+               }
+           }
        }
         if (type.equals("order")){
             //Toast.makeText(context,result,Toast.LENGTH_LONG).show();
