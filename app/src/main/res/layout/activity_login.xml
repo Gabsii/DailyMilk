@@ -19,7 +19,8 @@
         android:layout_above="@+id/LoginButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="22dp"
-        android:hint="Password" />
+        android:hint="Password"
+        android:visibility="invisible" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -31,7 +32,8 @@
         android:hint="Username"
         android:layout_alignBottom="@+id/PasswordInput"
         android:layout_alignLeft="@+id/PasswordInput"
-        android:layout_alignStart="@+id/PasswordInput" />
+        android:layout_alignStart="@+id/PasswordInput"
+        android:visibility="invisible" />
 
     <Button
         android:text="Login"
@@ -40,5 +42,25 @@
         android:id="@+id/LoginButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="OnLogin"/>
+        android:onClick="OnLogin"
+        android:visibility="invisible"/>
+
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/FirstLoginButton"
+        android:onClick="OnFirstLogin"
+        android:layout_marginBottom="163dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Logo"
+        android:src="@drawable/dailymilk"
+        android:layout_alignBottom="@+id/LoginButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -3,11 +3,15 @@ package dailymilk.com.dailymilk;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
+    ImageView logo;
+    Button login, firstLogin;
 
 
     @Override
@@ -17,8 +21,17 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.UsernameInput);
         password = (EditText) findViewById(R.id.PasswordInput);
-
-        //TODO: Am Anfang sieht man das Logo und einen Login Button, beim klicken auf den Login Button werden die 2 EditTexts eingeblendet
+        logo = (ImageView) findViewById(R.id.Logo);
+        login = (Button) findViewById(R.id.LoginButton);
+        firstLogin = (Button) findViewById(R.id.FirstLoginButton);
+    }
+    //Ausblenden des Logos und des ersten Login-Buttons / Einblenden des "richtigen" Login-Buttons und der 2 EditTexts
+    public void OnFirstLogin(View view) {
+        firstLogin.setVisibility(View.INVISIBLE);
+        logo.setVisibility(View.INVISIBLE);
+        username.setVisibility(View.VISIBLE);
+        password.setVisibility(View.VISIBLE);
+        login.setVisibility(View.VISIBLE);
     }
 
     public void OnLogin(View view){
