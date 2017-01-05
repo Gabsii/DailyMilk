@@ -62,4 +62,9 @@ public class MainActivity extends AppCompatActivity {
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
     }
+
+    /*public void goToOrders (View view) {
+        Intent intent = new Intent(this, OrderStateActivity.class);
+        startActivity(intent);
+    }*/
 }
