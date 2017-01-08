@@ -86,9 +86,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             }
         }
         if(type.equals("order")){
-            String user = params[1];
-            String order = params[2];
             try {
+                String user = params[1];
+                String order = params[2];
                 URL url = new URL(order_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -97,6 +97,37 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 BufferedWriter bW = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
                 String data = URLEncoder.encode("user", "UTF-8")+"="+URLEncoder.encode(user, "UTF-8")+"&"+
                         URLEncoder.encode("order", "UTF-8")+"="+URLEncoder.encode(order, "UTF-8");
+                bW.write(data);
+                bW.flush();
+                OS.close();
+                InputStream IS = httpURLConnection.getInputStream();
+                BufferedReader bR = new BufferedReader(new InputStreamReader(IS, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bR.readLine()) != null) {
+                    result += line;
+                }
+                bR.close();
+                IS.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } if(type.equals("view")){
+            try {
+                String user = params[1];
+                URL url = new URL(order_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream OS = httpURLConnection.getOutputStream();
+                BufferedWriter bW = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+                String data = URLEncoder.encode("user", "UTF-8")+"="+URLEncoder.encode(user, "UTF-8");
                 bW.write(data);
                 bW.flush();
                 OS.close();
@@ -145,6 +176,12 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             //Toast.makeText(context,result,Toast.LENGTH_LONG).show();
             //alertDialog.setMessage(result);
             //alertDialog.show();
+            Intent intent = new Intent(context, OrderStateActivity.class);
+            intent.putExtra(EXTRA_RESULT, result);
+            context.startActivity(intent);
+        }
+
+        if (type.equals("view")){
             Intent intent = new Intent(context, OrderStateActivity.class);
             intent.putExtra(EXTRA_RESULT, result);
             context.startActivity(intent);

@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //Ausblenden des Logos und des ersten Login-Buttons / Einblenden des "richtigen" Login-Buttons und der 2 EditTexts
     public void OnFirstLogin(View view) {
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
         Animation myFadeInAnimation1 = AnimationUtils.loadAnimation(this, R.anim.fadein);

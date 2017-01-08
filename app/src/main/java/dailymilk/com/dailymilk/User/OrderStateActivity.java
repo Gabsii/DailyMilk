@@ -29,8 +29,7 @@ public class OrderStateActivity extends AppCompatActivity {
             tv.setText(resultArray[i]);
             if (i == 0) { tv.setTypeface(null, Typeface.BOLD); tv.setPadding(0,2, 0, 5); }
             ll.addView(tv);
-            //TODO: Split resultArray in another Array to get every Element of resultArray in an seperated TextView
         }
-        //TODO: Grafisch Aufpeppen
+        //TODO: Zurück Button in der Actionbar einfügen
     }
 }
