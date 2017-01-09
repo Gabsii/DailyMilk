@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.LoginButton);
         firstLogin = (Button) findViewById(R.id.FirstLoginButton);
 
-
         //Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
         //logo.startAnimation(myFadeInAnimation);
         //firstLogin.startAnimation(myFadeInAnimation);
@@ -49,10 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         username.setVisibility(View.VISIBLE);
         password.setVisibility(View.VISIBLE);
         login.setVisibility(View.VISIBLE);
-
-
-
-
     }
 
     public void OnLogin(View view){

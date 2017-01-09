@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOrder(View view) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
     }
