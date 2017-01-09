@@ -88,22 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOrder(View view) {
-        /*final ImageButton orderButton = (ImageButton) findViewById(R.id.imageButton);
-        orderButton.setEnabled(false);
-        Timer buttonTimer = new Timer();
-        buttonTimer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        orderButton.setEnabled(true);
-                    }
-                });
-            }
-        }, 72000000);*/
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,7 +43,7 @@ public class OrderStateActivity extends AppCompatActivity {
                 ll.addView(now);
                 tv.setPadding(0,2,0,15);
             }
-            else if(i ==1) {
+            else if(i == 1) {
                 TextView history = new TextView(this);
                 history.setText("History");
                 history.setTypeface(null, Typeface.BOLD);
@@ -53,4 +54,17 @@ public class OrderStateActivity extends AppCompatActivity {
         }
         //TODO: Zurück Button in der Actionbar einfügen
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
+
+
