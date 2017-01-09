@@ -1,13 +1,20 @@
 package dailymilk.com.dailymilk.User;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -27,13 +34,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         String res = getIntent().getStringExtra(EXTRA_DRINKS);
         String[] resArray = res.split(";");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, resArray);
 
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-        TextView DisplayUser = (TextView) findViewById(R.id.Username);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setPadding(0,5,0,15);
@@ -52,9 +61,26 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         username = getIntent().getStringExtra(EXTRA_MESSAGE);
+        getSupportActionBar().setTitle(username);
 
-        DisplayUser.setText(username);
         //TODO: vielleicht sowas wie onSwipe wo man dann nach rechts swiped statt auf den Order Button zu drücken (es wird nicht bestellt sondern angezeigt)
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+
+            case R.id.action_orders:
+                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                backgroundWorker.execute("view",username);
+                break;
+        }
+        return true;
     }
 
     public void onOrder(View view) {

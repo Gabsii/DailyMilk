@@ -10,22 +10,32 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".User.MainActivity"
-                    android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-                    android:screenOrientation="portrait">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <activity
+            android:name=".User.MainActivity"
+            android:label="@string/Username"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".Admin.DashboardActivity"
-            android:label="Dashboard"></activity>
+            android:label="Dashboard">
+        </activity>
+
         <activity
             android:name=".Admin.OpenOrdersActivity"
-            android:label="OrderState"></activity>
-        <activity android:name=".User.OrderStateActivity"
+            android:label="OrderState">
+        </activity>
+
+        <activity
+            android:name=".User.OrderStateActivity"
             android:label="OrderState"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".LoginActivity"
                     android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
                     android:screenOrientation="portrait">
@@ -35,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
