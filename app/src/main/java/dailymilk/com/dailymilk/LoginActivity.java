@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         Animation myFadeInAnimation1 = AnimationUtils.loadAnimation(this, R.anim.fadein);
 
         logo.startAnimation(myFadeInAnimation);
-        //firstLogin.startAnimation(myFadeInAnimation);
         username.startAnimation(myFadeInAnimation1);
         password.startAnimation(myFadeInAnimation1);
         login.startAnimation(myFadeInAnimation1);
