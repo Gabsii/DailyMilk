@@ -2,6 +2,7 @@ package dailymilk.com.dailymilk.User;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -75,17 +76,19 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-
             case R.id.action_orders:
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
                 backgroundWorker.execute("view",username);
                 break;
+            case R.id.song:
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.song);
+                mp.start();
         }
         return true;
     }
 
     public void onOrder(View view) {
-        final ImageButton orderButton = (ImageButton) findViewById(R.id.imageButton);
+        /*final ImageButton orderButton = (ImageButton) findViewById(R.id.imageButton);
         orderButton.setEnabled(false);
         Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 72000000);
+        }, 72000000);*/
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
