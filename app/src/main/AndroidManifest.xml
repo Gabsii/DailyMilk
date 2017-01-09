@@ -16,7 +16,8 @@
             android:name=".User.MainActivity"
             android:label="@string/Username"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:value=".User.MainActivity">
         </activity>
 
         <activity
@@ -31,9 +32,10 @@
 
         <activity
             android:name=".User.OrderStateActivity"
-            android:label="OrderState"
+            android:label="Orders"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".User.MainActivity">
         </activity>
 
         <activity android:name=".LoginActivity"

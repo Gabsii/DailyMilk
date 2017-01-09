@@ -21,6 +21,8 @@ public class OrderStateActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         LinearLayout ll = (LinearLayout) findViewById(R.id.activity_order_state);
         ll.setOrientation(LinearLayout.VERTICAL);
@@ -30,10 +32,23 @@ public class OrderStateActivity extends AppCompatActivity {
         String[] resultArray = result.split(";");
 
         for(int i= 0, length = resultArray.length; i < length; i++) {
-            //TODO: Erster Eintrag muss unter derzeitiger Bestellstatus, alle anderen unter History gesetzt werden.
             TextView tv = new TextView(this);
             tv.setText(resultArray[i]);
-            if (i == 0) { tv.setTypeface(null, Typeface.BOLD); tv.setPadding(0,2, 0, 5); }
+            if (i == 0) {
+                TextView now = new TextView(this);
+                now.setText("pending Orders");
+                now.setTypeface(null, Typeface.BOLD);
+                now.setTextSize(20);
+                ll.addView(now);
+                tv.setPadding(0,2,0,15);
+            }
+            else if(i ==1) {
+                TextView history = new TextView(this);
+                history.setText("History");
+                history.setTypeface(null, Typeface.BOLD);
+                history.setTextSize(20);
+                ll.addView(history);
+            }
             ll.addView(tv);
         }
         //TODO: Zurück Button in der Actionbar einfügen

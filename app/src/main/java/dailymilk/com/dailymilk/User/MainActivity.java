@@ -11,12 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.R;
@@ -62,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
         username = getIntent().getStringExtra(EXTRA_MESSAGE);
         getSupportActionBar().setTitle(username);
-
-        //TODO: vielleicht sowas wie onSwipe wo man dann nach rechts swiped statt auf den Order Button zu drücken (es wird nicht bestellt sondern angezeigt)
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,15 +85,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onOrder(View view) {
+        final ImageButton orderButton = (ImageButton) findViewById(R.id.imageButton);
+        orderButton.setEnabled(false);
+        Timer buttonTimer = new Timer();
+        buttonTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        orderButton.setEnabled(true);
+                    }
+                });
+            }
+        }, 72000000);
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
-    }
-
-    public void goToOrders (View view) {
-        //TODO: goToOrders Button in die Actionbar verschieben
-
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute("view",username);
     }
 }
