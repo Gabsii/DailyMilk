@@ -51,6 +51,5 @@ public class OrderStateActivity extends AppCompatActivity {
             }
             ll.addView(tv);
         }
-        //TODO: Zurück Button in der Actionbar einfügen
     }
 }
