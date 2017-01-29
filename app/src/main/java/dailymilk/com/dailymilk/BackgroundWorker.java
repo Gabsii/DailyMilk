@@ -186,6 +186,11 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             intent.putExtra(EXTRA_RESULT, result);
             context.startActivity(intent);
         }
+
+        if (type.equals("instructions")){
+            Intent intent = new Intent(context, InstructionsActivity.class);
+            context.startActivity(intent);
+        }
     }
 
     @Override

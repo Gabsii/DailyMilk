@@ -43,7 +43,7 @@ public class OrderStateActivity extends AppCompatActivity {
                 ll.addView(now);
                 tv.setPadding(0,2,0,15);
             }
-            else if(i == 1) {
+            else if(i == 2) {
                 TextView history = new TextView(this);
                 history.setText("History");
                 history.setTypeface(null, Typeface.BOLD);

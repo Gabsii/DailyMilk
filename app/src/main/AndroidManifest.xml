@@ -48,6 +48,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+        android:name=".InstructionsActivity"
+        android:label="Instructions"
+        android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+        android:screenOrientation="portrait"
+        android:parentActivityName=".LoginActivity">
+    </activity>
+
     </application>
 
 </manifest>
