@@ -52,10 +52,9 @@ public class LoginActivity extends AppCompatActivity {
     public void OnLogin(View view){
         String user = username.getText().toString();
         String pass = password.getText().toString();
-        String type = "login";
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, user, pass);
+        backgroundWorker.execute("login", user, pass);
     }
 
 }

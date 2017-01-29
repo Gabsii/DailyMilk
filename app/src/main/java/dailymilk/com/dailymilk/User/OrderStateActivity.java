@@ -4,8 +4,6 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,15 +33,18 @@ public class OrderStateActivity extends AppCompatActivity {
         for(int i= 0, length = resultArray.length; i < length; i++) {
             TextView tv = new TextView(this);
             tv.setText(resultArray[i]);
-            if (i == 0) {
-                TextView now = new TextView(this);
-                now.setText("pending Orders");
-                now.setTypeface(null, Typeface.BOLD);
-                now.setTextSize(20);
-                ll.addView(now);
-                tv.setPadding(0,2,0,15);
+            if (i < 2) {
+                if(i==0) {
+                    TextView now = new TextView(this);
+                    now.setText("pending Orders");
+                    now.setTypeface(null, Typeface.BOLD);
+                    now.setTextSize(20);
+                    ll.addView(now);
+                }else {
+                    tv.setPadding(0, 2, 0, 15);
+                }
             }
-            else if(i == 1) {
+            else if(i == 2) {
                 TextView history = new TextView(this);
                 history.setText("History");
                 history.setTypeface(null, Typeface.BOLD);

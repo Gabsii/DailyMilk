@@ -35,9 +35,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:entries="@array/drinks"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:minWidth="50dp" />
+        android:minWidth="50dp"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
 
 </RelativeLayout>
