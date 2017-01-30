@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="dailymilk.com.dailymilk.Admin.DashboardActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#fff9f2">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:layout_alignParentTop="true"

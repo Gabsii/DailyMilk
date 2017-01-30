@@ -43,7 +43,8 @@
 
         <activity android:name=".LoginActivity"
                     android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-                    android:screenOrientation="portrait">
+                    android:screenOrientation="portrait"
+                    android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
