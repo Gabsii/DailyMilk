@@ -23,9 +23,8 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.UsernameInput);
         password = (EditText) findViewById(R.id.PasswordInput);
-        logo = (ImageView) findViewById(R.id.Logo);
         login = (Button) findViewById(R.id.LoginButton);
-        firstLogin = (Button) findViewById(R.id.FirstLoginButton);
+
 
         //Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
         //logo.startAnimation(myFadeInAnimation);
