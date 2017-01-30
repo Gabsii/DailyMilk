@@ -26,17 +26,19 @@
         android:background="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="108dp" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/simpleSpinner"
         android:entries="@array/drinks"
         android:minWidth="50dp"
-        android:layout_below="@+id/my_toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="170dp"
+        android:layout_alignRight="@id/imageButton"
+        android:layout_alignLeft="@id/imageButton"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, resArray);
 
-        Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
+        Spinner mySpinner = (Spinner) findViewById(R.id.simpleSpinner);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setPadding(0,5,0,15);
