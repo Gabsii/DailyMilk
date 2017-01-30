@@ -83,15 +83,21 @@ public class OpenOrdersActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.openorders, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.action_orders:
+            case R.id.action_delete:
+
                 //remove all selected Entries
                 break;
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }

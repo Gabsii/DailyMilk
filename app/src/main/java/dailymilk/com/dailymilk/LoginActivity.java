@@ -77,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, InstructionsActivity.class);
                 this.startActivity(intent);
                 break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }

@@ -17,17 +17,20 @@
             android:label="@string/Username"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:screenOrientation="portrait"
-            android:value=".User.MainActivity">
+            android:value=".User.MainActivity"
+            android:parentActivityName=".LoginActivity">
         </activity>
 
         <activity
             android:name=".Admin.DashboardActivity"
-            android:label="Dashboard">
+            android:label="Dashboard"
+            android:value=".Admin.DashboardActivity">
         </activity>
 
         <activity
             android:name=".Admin.OpenOrdersActivity"
-            android:label="OrderState">
+            android:label="OrderState"
+            android:parentActivityName=".Admin.DashboardActivity">
         </activity>
 
         <activity
@@ -46,6 +49,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity

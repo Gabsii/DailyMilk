@@ -1,5 +1,6 @@
 package dailymilk.com.dailymilk.User;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import dailymilk.com.dailymilk.BackgroundWorker;
+import dailymilk.com.dailymilk.InstructionsActivity;
 import dailymilk.com.dailymilk.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.setNavigationIcon(R.drawable.ic_exit_to_app_black_24dp);
         setSupportActionBar(myToolbar);
+
+
+
 
         String res = getIntent().getStringExtra(EXTRA_DRINKS);
         String[] resArray = res.split(";");
@@ -68,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
                 backgroundWorker.execute("view",username);
                 break;
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }

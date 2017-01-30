@@ -17,4 +17,12 @@
     <string-array name="drinks">
     </string-array>
     <string name="Username"></string>
-    </resources>
+    <string name="about">About DailyMilk</string>
+    <string name="about_">Daily Milk is an idea based on the daily milk need of our coworkers.\nThe idea was based on some kind of food-delivery service like Lieferservice.at.\nFor more information about our project write us an email.(jan.burtscher@student.htldornbirn.at)\n</string>
+    <string name="howto">How to order</string>
+    <string name="howto_0">\u2022Log in with your username and password.</string>
+    <string name="howto_1">\u2022Select your drink and place the order with the button below.</string>
+    <string name="howto_2">\u2022You can only order once every 20 hours.</string>
+    <string name="howto_3">\u2022You will recieve your drink shortly after you ordered it.\n</string>
+    <string name="enjoy">Enjoy your Milk!</string>
+</resources>
