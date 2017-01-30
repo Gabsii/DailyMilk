@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_remove"
+        android:icon="@drawable/checked"
+        android:title="Remove"
+        app:showAsAction="always"
+        android:checkable="false"
+        android:onClick="showSelectedItems()" />
+</menu>

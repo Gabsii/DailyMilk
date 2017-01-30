@@ -1,11 +1,5 @@
 package dailymilk.com.dailymilk.User;
 
-<<<<<<< HEAD
-import android.app.ActionBar;
-import android.content.Intent;
-import android.support.annotation.IntegerRes;
-=======
->>>>>>> origin/master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,32 +10,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-<<<<<<< HEAD
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-=======
->>>>>>> origin/master
 
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.R;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "Username";
     public final static String EXTRA_DRINKS = "DRINK";
     String orderedItem;
     String username;
-<<<<<<< HEAD
-    String time;
-    int pictures[] = {R.drawable.dose, R.drawable.flasche, R.drawable.tetrapack};
-=======
->>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,28 +30,25 @@ public class MainActivity extends AppCompatActivity  {
         setSupportActionBar(myToolbar);
 
         String res = getIntent().getStringExtra(EXTRA_DRINKS);
+        String[] resArray = res.split(";");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, resArray);
 
-        final String[] drinks = res.split(";");
-        Spinner mySpinner = (Spinner) findViewById(R.id.simpleSpinner);
+        Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
 
-        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, resArray);*/
-
-        CustomAdapter adapter=new CustomAdapter(getApplicationContext(), pictures, drinks);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setPadding(0,5,0,15);
         mySpinner.setAdapter(adapter);
 
         mySpinner.setOnItemSelectedListener((new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                orderedItem = drinks[position].toString();
-               // Toast.makeText(getApplicationContext(), orderedItem, Toast.LENGTH_LONG).show();
+                orderedItem = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
+
             }
         }));
 
@@ -102,6 +77,4 @@ public class MainActivity extends AppCompatActivity  {
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute("order",username, orderedItem);
     }
-
-
 }
