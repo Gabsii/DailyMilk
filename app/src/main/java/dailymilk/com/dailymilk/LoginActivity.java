@@ -1,7 +1,12 @@
 package dailymilk.com.dailymilk;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,6 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         //logo.startAnimation(myFadeInAnimation);
         //firstLogin.startAnimation(myFadeInAnimation);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
     }
 
     public void OnFirstLogin(View view) {
@@ -51,10 +59,25 @@ public class LoginActivity extends AppCompatActivity {
     public void OnLogin(View view){
         String user = username.getText().toString();
         String pass = password.getText().toString();
-        String type = "login";
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, user, pass);
+        backgroundWorker.execute("login", user, pass);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.login, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_instructions:
+                Intent intent = new Intent(this, InstructionsActivity.class);
+                this.startActivity(intent);
+                break;
+        }
+        return true;
     }
 
 }

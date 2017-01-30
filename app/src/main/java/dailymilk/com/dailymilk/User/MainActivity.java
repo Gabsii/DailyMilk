@@ -1,8 +1,11 @@
 package dailymilk.com.dailymilk.User;
 
+<<<<<<< HEAD
 import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.IntegerRes;
+=======
+>>>>>>> origin/master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
+<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+=======
+>>>>>>> origin/master
 
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.R;
@@ -33,8 +37,11 @@ public class MainActivity extends AppCompatActivity  {
     public final static String EXTRA_DRINKS = "DRINK";
     String orderedItem;
     String username;
+<<<<<<< HEAD
     String time;
     int pictures[] = {R.drawable.dose, R.drawable.flasche, R.drawable.tetrapack};
+=======
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
