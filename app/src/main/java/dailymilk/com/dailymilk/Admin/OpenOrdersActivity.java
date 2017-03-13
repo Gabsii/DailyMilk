@@ -7,14 +7,20 @@ import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import dailymilk.com.dailymilk.BackgroundRemover;
 import dailymilk.com.dailymilk.R;
+
+import static android.widget.RelativeLayout.*;
 
 public class OpenOrdersActivity extends AppCompatActivity {
 
@@ -25,7 +31,6 @@ public class OpenOrdersActivity extends AppCompatActivity {
     ListView chl;
     private ArrayList<String> orderArray;
     private ArrayList<String> idArray;
-    private ArrayList<String> remidArray = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,20 +47,32 @@ public class OpenOrdersActivity extends AppCompatActivity {
     public void populate() {
         String[] result = getIntent().getStringExtra(EXTRA_RESULT).split(";");
         orderArray = new ArrayList<>(Arrays.asList(result));
-        idArray = new ArrayList<>();
 
-        for (int i = 0; orderArray.size() > i; i++) {
-            String str = orderArray.get(i).toString();
-            String numberonly = str.replaceAll("[^0-9]+", "").trim();
-            idArray.add(i, numberonly);
-            String item = str.replaceAll("[^A-Za-z\\s]", "");
-            orderArray.set(i, item);
+        if (orderArray.get(0).equals("Error")) {
+            TextView tv = new TextView(this);
+            RelativeLayout rl = (RelativeLayout) findViewById(R.id.oo);
+            RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            p.addRule(RelativeLayout.BELOW, R.id.my_toolbar);
+            tv.setLayoutParams(p);
+            tv.setText("No open orders! " + new String(Character.toChars(0x1F44D)) + " Well done!");
+            rl.addView(tv);
+        } else {
+            idArray = new ArrayList<>();
+
+            for (int i = 0; orderArray.size() > i; i++) {
+                String str = orderArray.get(i).toString();
+                String numberonly = str.replaceAll("[^0-9]+", "").trim();
+                idArray.add(i, numberonly);
+                String item = str.replaceAll("[^A-Za-z\\s]", "");
+                orderArray.set(i, item);
+            }
+
+            chl = (ListView) findViewById(R.id.checkableList);
+            chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            adapter = new ArrayAdapter<>(this, R.layout.rowlayout, R.id.txt_lan, orderArray);
+            chl.setAdapter(adapter);
         }
-
-        chl = (ListView) findViewById(R.id.checkableList);
-        chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        adapter = new ArrayAdapter<>(this, R.layout.rowlayout, R.id.txt_lan, orderArray);
-        chl.setAdapter(adapter);
     }
 
     public void removeSelectedItems(MenuItem menuItem) {
@@ -73,7 +90,6 @@ public class OpenOrdersActivity extends AppCompatActivity {
         }
 
         checkedItems.clear();
-        remidArray.clear();
         adapter.notifyDataSetChanged();
     }
 

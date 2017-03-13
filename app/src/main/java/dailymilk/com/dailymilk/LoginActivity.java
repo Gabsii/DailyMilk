@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         checkSession();
+
         init();
     }
 
@@ -40,10 +41,12 @@ public class LoginActivity extends AppCompatActivity {
                 //user mode
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
                 backgroundWorker.execute("login", user, pass);
+                //TODO: Start login Animation
             } else {
                 //admin mode
                 BackgroundWorker backgroundWorker = new BackgroundWorker(this);
                 backgroundWorker.execute("login", user, pass);
+                //TODO: Start login Animation
             }
 
         }
@@ -59,6 +62,20 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+
+    public void OnLogin(View view) {
+        String user = username.getText().toString();
+        String pass = password.getText().toString();
+
+        SaveSharedPreferences.setUserName(getApplicationContext(), user);
+        SaveSharedPreferences.setPassword(getApplicationContext(), pass);
+
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute("login", user, pass);
+        username.setText("");
+        password.setText("");
+
+    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -78,6 +95,12 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkSession();
+    }
+
     /*public void OnFirstLogin(View view) {
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
         Animation myFadeInAnimation1 = AnimationUtils.loadAnimation(this, R.anim.fadein);
@@ -92,24 +115,5 @@ public class LoginActivity extends AppCompatActivity {
         username.setVisibility(View.VISIBLE);
         password.setVisibility(View.VISIBLE);
         login.setVisibility(View.VISIBLE);
-    }*/
-    public void OnLogin(View view) {
-        String user = username.getText().toString();
-        String pass = password.getText().toString();
-
-        SaveSharedPreferences.setUserName(getApplicationContext(), user);
-        SaveSharedPreferences.setPassword(getApplicationContext(), pass);
-
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute("login", user, pass);
-        username.setText("");
-        password.setText("");
-
-    }
-
-    /*@Override
-    protected void onResume() {
-        super.onResume();
-        checkSession();
     }*/
 }
