@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -36,12 +35,12 @@ import static dailymilk.com.dailymilk.User.OrderStateActivity.EXTRA_RESULT;
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
-    public BackgroundWorker(Context ctx){
-        context = ctx;
-    }
     String type;
     String user_name;
     Intent admintent;
+    public BackgroundWorker(Context ctx) {
+        context = ctx;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -194,39 +193,39 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        if(type.equals("login")) {
+        if (type.equals("login")) {
             if (result.equals("Username/Password is wrong")) {
                 alertDialog.setMessage(result);
                 alertDialog.show();
             } else {
-                if(result.equals("isAdmin")){
+                if (result.equals("isAdmin")) {
                     //new BackgroundWorker(context).execute("admin", "rootAdmin");
+                    LoginActivity.ADMIN_STATUS = 1;
                     Intent intent = new Intent(context, DashboardActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     intent.putExtra(EXTRA_USER, user_name.toString());
                     context.startActivity(intent);
-                }else {
+                } else {
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.putExtra(MainActivity.EXTRA_MESSAGE, user_name);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     intent.putExtra(MainActivity.EXTRA_DRINKS, result);
                     context.startActivity(intent);
                 }
             }
         }
-        if (type.equals("order")){
-            //Toast.makeText(context,result,Toast.LENGTH_LONG).show();
-            //alertDialog.setMessage(result);
-            //alertDialog.show();
+        if (type.equals("order")) {
             Intent intent = new Intent(context, OrderStateActivity.class);
             intent.putExtra(EXTRA_RESULT, result);
             context.startActivity(intent);
         }
 
-        if (type.equals("view")){
+        if (type.equals("view")) {
             Intent intent = new Intent(context, OrderStateActivity.class);
             intent.putExtra(EXTRA_RESULT, result);
             context.startActivity(intent);
         }
-        if (type.equals("admin")){
+        if (type.equals("admin")) {
             // new BackgroundWorker(context).execute("admin", user_name);
             admintent = new Intent(context, OpenOrdersActivity.class);
             admintent.putExtra(EXTRA_USERNAME, user_name);
@@ -237,7 +236,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onProgressUpdate(Void... values) {
-                super.onProgressUpdate(values);
+        super.onProgressUpdate(values);
     }
 
 }

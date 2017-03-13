@@ -1,4 +1,4 @@
-package dailymilk.com.dailymilk;
+package dailymilk.com.dailymilk.User;
 
 import android.content.Context;
 import android.view.View;

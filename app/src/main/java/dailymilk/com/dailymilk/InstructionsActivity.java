@@ -1,18 +1,9 @@
 package dailymilk.com.dailymilk;
 
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 /**
  * Created by Benedikt on 29.01.2017.
@@ -31,6 +22,4 @@ public class InstructionsActivity extends AppCompatActivity {
 
 
     }
-
-
 }

@@ -1,28 +1,27 @@
 package dailymilk.com.dailymilk.Admin;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
+
 import dailymilk.com.dailymilk.BackgroundWorker;
+import dailymilk.com.dailymilk.LoginActivity;
 import dailymilk.com.dailymilk.R;
 
 public class DashboardActivity extends AppCompatActivity {
 
 
     public final static String EXTRA_USER = "";
-    String username;
     final Context ctx = this;
+    String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(username.toString());
 
         Button b = (Button) findViewById(R.id.openord);
-        b.setOnClickListener(new View.OnClickListener(){
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BackgroundWorker backgroundWorker = new BackgroundWorker(ctx);
@@ -47,14 +46,16 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

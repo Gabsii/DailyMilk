@@ -14,8 +14,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string-array name="drinks">
-    </string-array>
+    <string-array name="drinks"></string-array>
     <string name="Username"></string>
     <string name="about">About DailyMilk</string>
     <string name="about_">Daily Milk is an idea based on the daily milk need of our coworkers.\nThe idea was based on some kind of food-delivery service like Lieferservice.at.\nFor more information about our project write us an email.(jan.burtscher@student.htldornbirn.at)\n</string>
