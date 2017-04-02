@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.LoginActivity;
 import dailymilk.com.dailymilk.R;
+import dailymilk.com.dailymilk.SaveSharedPreferences;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -30,6 +32,16 @@ public class DashboardActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setNavigationIcon(R.drawable.ic_exit_to_app_black_24dp);
         setSupportActionBar(myToolbar);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCredentialsBack();
+                Toast.makeText(getApplicationContext(), SaveSharedPreferences.getUserName(getApplicationContext()) + SaveSharedPreferences.getPassword(getApplicationContext()), Toast.LENGTH_LONG).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         TextView tv = new TextView(this);
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.activity_dashboard);
@@ -50,12 +62,23 @@ public class DashboardActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
-                Intent intent = new Intent(this, LoginActivity.class);
-                this.startActivity(intent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        setCredentialsBack();
+        this.finish();
+        Intent intent = new Intent(this, LoginActivity.class);
+        this.startActivity(intent);
+    }
+
+    private void setCredentialsBack(){
+        SaveSharedPreferences.setPassword(this,"");
+        SaveSharedPreferences.setUserName(this,"");
     }
 }

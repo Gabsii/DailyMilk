@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import dailymilk.com.dailymilk.BackgroundWorker;
 import dailymilk.com.dailymilk.LoginActivity;
@@ -32,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setNavigationIcon(R.drawable.ic_exit_to_app_black_24dp);
         setSupportActionBar(myToolbar);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCredentialsBack();
+                Toast.makeText(getApplicationContext(), SaveSharedPreferences.getUserName(getApplicationContext()) + SaveSharedPreferences.getPassword(getApplicationContext()), Toast.LENGTH_LONG).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         String res = getIntent().getStringExtra(EXTRA_DRINKS);
         String[] resArray = res.split(";");
@@ -73,10 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 backgroundWorker.execute("view", username);
                 break;
             case R.id.home:
-                setCredentialsBack();
-                this.finish();
-                Intent intent = new Intent(this, LoginActivity.class);
-                this.startActivity(intent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -96,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         this.finish();
         Intent intent = new Intent(this, LoginActivity.class);
         this.startActivity(intent);
-
     }
 
     private void setCredentialsBack(){
